@@ -1,0 +1,51 @@
+---
+description: NanoClaw v2를 시작합니다 — model routing, skill 핫로드, 브랜칭, 압축, 내보내기, 메트릭을 갖춘 ECC의 지속적이고 의존성 없는 REPL입니다.
+---
+
+# Claw 커맨드
+
+지속적인 마크다운 히스토리와 운영 제어 기능을 갖춘 인터랙티브 AI 에이전트 세션을 시작합니다.
+
+## 사용법
+
+```bash
+node scripts/claw.js
+```
+
+또는 npm을 통해:
+
+```bash
+npm run claw
+```
+
+## 환경 변수
+
+| 변수 | 기본값 | 설명 |
+|----------|---------|-------------|
+| `CLAW_SESSION` | `default` | 세션 이름 (영숫자 + 하이픈) |
+| `CLAW_SKILLS` | *(비어 있음)* | 시작 시 로드되는 쉼표로 구분된 skill 목록 |
+| `CLAW_MODEL` | `sonnet` | 세션의 기본 모델 |
+
+## REPL 커맨드
+
+```text
+/help                          Show help
+/clear                         Clear current session history
+/history                       Print full conversation history
+/sessions                      List saved sessions
+/model [name]                  Show/set model
+/load <skill-name>             Hot-load a skill into context
+/branch <session-name>         Branch current session
+/search <query>                Search query across sessions
+/compact                       Compact old turns, keep recent context
+/export <md|json|txt> [path]   Export session
+/metrics                       Show session metrics
+exit                           Quit
+```
+
+## 참고 사항
+
+- NanoClaw는 의존성이 없습니다.
+- 세션은 `~/.claude/claw/<session>.md`에 저장됩니다.
+- 압축은 가장 최근 턴을 유지하고 압축 헤더를 작성합니다.
+- 내보내기는 마크다운, JSON 턴, 평문 텍스트를 지원합니다.
